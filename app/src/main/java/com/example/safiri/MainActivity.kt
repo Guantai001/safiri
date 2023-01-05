@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.safiri.navigation.NavScreens.MainScreen
 import com.example.safiri.ui.theme.SafiriTheme
 import com.example.safiri.view.*
 
