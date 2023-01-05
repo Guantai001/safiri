@@ -25,16 +25,16 @@ class MainActivity : ComponentActivity() {
                 Surface(modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background) {
                     val navController = rememberNavController()
-                    NavHost(navController = navController, startDestination = "splash_screen") {
-                        composable("splash_screen") {
-                            SplashScreen(navController = navController)
-                        }
-                        composable("login_screen") {
-                            LoginScreen(navController = navController)
-                        }
-
-                    }
-//                        forgot()
+//                    NavHost(navController = navController, startDestination = "splash_screen") {
+//                        composable("splash_screen") {
+//                            SplashScreen(navController = navController)
+//                        }
+//                        composable("login_screen") {
+//                            LoginScreen(navController = navController)
+//                        }
+//
+//                    }
+                    MainScreen()
                 }
             }
         }
