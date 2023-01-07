@@ -245,6 +245,7 @@ fun DrawerContent() {
                     modifier = Modifier
                         .padding(start = 25.dp, end = 16.dp, top = 15.dp),
                     fontSize = 16.sp,
+                    color = Color(0xFF7A7E7D),
                     )
             }
             //Terms and Condition
@@ -270,6 +271,7 @@ fun DrawerContent() {
                     modifier = Modifier
                         .padding(start = 25.dp, end = 16.dp, top = 15.dp),
                     fontSize = 16.sp,
+                    color = Color(0xFF7A7E7D),
 
                     )
             }
@@ -295,6 +297,7 @@ fun DrawerContent() {
                     modifier = Modifier
                         .padding(start = 25.dp, end = 16.dp, top = 15.dp),
                     fontSize = 16.sp,
+                    color = Color(0xFF7A7E7D),
 
                     )
             }

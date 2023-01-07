@@ -5,29 +5,45 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.safiri.R
+import com.example.safiri.navigation.NavigationItem
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
 
 @Composable
-fun TopBarr(scaffoldState: ScaffoldState, scope: CoroutineScope) {
+fun TopBarr(scaffoldState: ScaffoldState, scope: CoroutineScope,navController: NavController) {
     TopAppBar(
         title={
-            Text("Home",
-                modifier = Modifier
-                    .padding(start = 20.dp),
-                color = Color.White
 
+            val items = listOf(
+                NavigationItem.Home,
+                NavigationItem.MyBooking,
+                NavigationItem.Account,
             )
+
+              val navBackStackEntry by navController.currentBackStackEntryAsState()
+                val currentRoute = navBackStackEntry?.destination?.route
+                items.forEach { item ->
+                    if (currentRoute == item.route){
+                        Text(text = item.title,
+                            modifier = Modifier
+                                .padding(start = 5.dp),
+                            color = Color.White
+                        )
+                    }
+                }
         },
         navigationIcon = {
             IconButton(

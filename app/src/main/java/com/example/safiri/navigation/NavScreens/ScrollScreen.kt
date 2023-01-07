@@ -27,7 +27,7 @@ fun ScrollScreen() {
 
     Scaffold(
         scaffoldState= scaffoldState,
-        topBar = { TopBarr(scaffoldState, scope) },
+      topBar = { TopBarr(scaffoldState, scope,navController) },
         content = {padding ->
             Box(modifier = Modifier.padding(padding)){
                 NavigationGraph(navController = navController, scaffoldState = scaffoldState, scope = scope)
