@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
@@ -16,11 +17,14 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.safiri.navigation.NavigationItem
-import com.example.safiri.view.HomeScreen
+import com.example.safiri.view.BusBooking.body
+
+import kotlinx.coroutines.CoroutineScope
 
 
 @Composable
 fun BottomNavigationBar(navController:NavController) {
+
     val items = listOf(
         NavigationItem.Home,
         NavigationItem.MyBooking,
@@ -34,7 +38,9 @@ fun BottomNavigationBar(navController:NavController) {
         val currentRoute = navBackStackEntry?.destination?.route
         items.forEach { item ->
             BottomNavigationItem(
-                icon = { Icon(painterResource(id = item.icon), contentDescription = item.title) },
+                icon = {
+                    Icon(painterResource(id = item.icon),
+                        contentDescription = item.title) },
                 label = { Text(text = item.title) },
                 selectedContentColor = Color.Green,
                 unselectedContentColor = Color.Green.copy(0.4f),
@@ -50,25 +56,16 @@ fun BottomNavigationBar(navController:NavController) {
             )
         }
     }
+  //  NavigationGraph(navController = navController, scaffoldState = scaffoldState, scope = scope)
 
 }
-@Composable
-fun MainScreen() {
-    var navController = rememberNavController()
-    Scaffold (
-        bottomBar = { BottomNavigationBar(navController) },
-        content = {padding -> Box(modifier = Modifier.padding(padding)) {
-            NavigationGraph(navController = navController)
-        }
-        },
-            )
-}
+
 
 @Composable
-fun NavigationGraph(navController: NavHostController) {
+fun NavigationGraph(navController: NavHostController,scaffoldState: ScaffoldState, scope: CoroutineScope) {
     NavHost(navController, startDestination = NavigationItem.Home.route) {
-        composable(NavigationItem.Home.route){
-            HomeScreen()
+        composable(NavigationItem.Home.route) {
+            body()
         }
 
         composable(NavigationItem.MyBooking.route) {
@@ -79,7 +76,6 @@ fun NavigationGraph(navController: NavHostController) {
             BookingScreen()
         }
 
-
-
     }
 }
+//NavigationGraph(navController = navController, scaffoldState = scaffoldState, scope = scope)

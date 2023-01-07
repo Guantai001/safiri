@@ -6,14 +6,18 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.material.rememberScaffoldState
+import androidx.compose.runtime.rememberCoroutineScope
 
 import androidx.compose.ui.Modifier
 
 import androidx.navigation.compose.rememberNavController
+import com.example.safiri.navigation.NavScreens.NavigationGraph
+import com.example.safiri.navigation.NavScreens.ScrollScreen
+
 
 import com.example.safiri.ui.theme.SafiriTheme
 
-import com.example.safiri.view.BusBooking.JourneyDetail
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +37,8 @@ class MainActivity : ComponentActivity() {
 //                        }
 //
 //                    }
-                    JourneyDetail()
+                    ScrollScreen()
+
                 }
             }
         }
